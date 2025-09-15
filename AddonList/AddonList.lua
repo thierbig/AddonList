@@ -4,6 +4,8 @@ local GetAddOnInfo = C_GetAddOnInfo
 
 local ADDON_BUTTON_HEIGHT = 16;
 local MAX_ADDONS_DISPLAYED = 19;
+local lastMemoryUpdate = 0
+local memoryCache = {}
 
 -- Dropdown API compatibility (ClassicAPI vs stock)
 local _DD_PREFIX = _G.C_UIDropDownMenu_Initialize and "C_" or ""
@@ -553,18 +555,30 @@ function AddonTooltip_Update(owner)
 			end
 		end
 
-		if ( enabled ) then
-			UpdateAddOnMemoryUsage();
-
-			local memory, string = GetAddOnMemoryUsage(Index);
-			if ( memory > 1000 ) then
-				memory = memory / 1000;
-				string = TOTAL_MEM_MB_ABBR;
-			else
-				string = TOTAL_MEM_KB_ABBR;
+		if enabled then
+			local now = GetTime()
+			if now - lastMemoryUpdate > 5 then
+				-- Only update all addons' memory every 5 seconds
+				UpdateAddOnMemoryUsage()
+				lastMemoryUpdate = now
 			end
-			GameTooltip:AddLine(" ");
-			GameTooltip:AddLine(format(string, memory), .7, .7, .7);
+
+			local memory = memoryCache[Index]
+			if not memory or now - lastMemoryUpdate < 0.1 then
+				memory = GetAddOnMemoryUsage(Index)
+				memoryCache[Index] = memory
+			end
+
+			local string
+			if memory > 1000 then
+				memory = memory / 1000
+				string = TOTAL_MEM_MB_ABBR
+			else
+				string = TOTAL_MEM_KB_ABBR
+			end
+
+			GameTooltip:AddLine(" ")
+			GameTooltip:AddLine(format(string, memory), .7, .7, .7)
 		end
 	end
 
