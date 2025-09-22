@@ -29,7 +29,6 @@ This fork adds **modern UI compatibility fixes** to make it work on clients with
 
 Latest Release `[.zip, .tar.gz, ...]`:
 
-#### &nbsp;&nbsp;&nbsp;&nbsp;⇣ <a href="https://gitlab.com/Tsoukie/addonlist-3.3.5/-/releases" target="_blank">Addon List</a>
 #### &nbsp;&nbsp;&nbsp;&nbsp;⇣ <a href="https://gitlab.com/Tsoukie/classicapi/-/releases" target="_blank">ClassicAPI</a> <code>Required</code>
 
 Required Client Version: 3.3.5a (Vanilla, TBC, WotLK)  
