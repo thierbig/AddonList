@@ -31,8 +31,7 @@ Latest Release `[.zip, .tar.gz, ...]`:
 
 #### &nbsp;&nbsp;&nbsp;&nbsp;⇣ <a href="https://gitlab.com/Tsoukie/classicapi/-/releases" target="_blank">ClassicAPI</a> <code>Required</code>
 
-Required Client Version: 3.3.5a (Vanilla, TBC, WotLK)  
-| [⌕ All Releases](https://gitlab.com/Tsoukie/addonlist-3.3.5/-/releases)
+Required Client Version: 3.3.5a
 
 <details>
 <summary>Installation Instructions</summary>
